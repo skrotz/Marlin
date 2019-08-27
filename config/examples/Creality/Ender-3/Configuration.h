@@ -474,9 +474,9 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
   // Creality Ender-3 (SAK Machine Specific values!)
-  #define DEFAULT_Kp 18.99 // was 21.73
-  #define DEFAULT_Ki 1.01 // was 1.54
-  #define DEFAULT_Kd 88.91 // was 76.55
+  #define DEFAULT_Kp 24.13 // was 21.73
+  #define DEFAULT_Ki 1.76 // was 1.54
+  #define DEFAULT_Kd 82.61 // was 76.55
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -512,7 +512,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -530,9 +530,10 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  // SAK Change set autotuned values for Ender 3
+  #define DEFAULT_bedKp 91.02 // was 10.00
+  #define DEFAULT_bedKi 14.96 // was .023
+  #define DEFAULT_bedKd 369.29 // was 305.4
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
@@ -721,7 +722,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 415 } // SAK Changed extruder steps for Bondtech extruder
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 } // SAK Changed extruder steps for Bondtech extruder (was 415 on first attempt)
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1157,13 +1158,13 @@
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
-//#define MESH_BED_LEVELING
+#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1256,7 +1257,8 @@
   //===========================================================================
 
   #define MESH_INSET 10          // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 3    // Don't use more than 7 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5
+      // Don't use more than 7 points per axis, implementation limited. - SAK Change was 3
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define MESH_G28_REST_ORIGIN // After homing all axes ('G28' or 'G28 XYZ') rest Z at Z_MIN_POS
