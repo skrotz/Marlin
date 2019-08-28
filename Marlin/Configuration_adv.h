@@ -1790,7 +1790,7 @@
    */
   #define STEALTHCHOP_XY
   #define STEALTHCHOP_Z
-  // #define STEALTHCHOP_E - SAK Change for linear advance and also to prevent extruder skips
+  #define STEALTHCHOP_E
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
