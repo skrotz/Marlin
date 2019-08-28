@@ -386,6 +386,8 @@
   #error "MKS_ROBIN_TFT is now FSMC_GRAPHICAL_TFT. Please update your configuration."
 #elif defined(SDPOWER)
   #error "SDPOWER is now SDPOWER_PIN. Please update your configuration and/or pins."
+#elif defined(STRING_SPLASH_LINE1) || defined(STRING_SPLASH_LINE2)
+  #error "STRING_SPLASH_LINE[12] are now obsolete. Please remove them from Configuration.h."
 #endif
 
 #define BOARD_MKS_13        -1109
@@ -1007,6 +1009,13 @@ static_assert(Y_MAX_LENGTH >= Y_BED_SIZE, "Movement bounds (Y_MIN_POS, Y_MAX_POS
       #error "DELTA requires GRID_MAX_POINTS_X and GRID_MAX_POINTS_Y to be 3 or higher."
     #endif
   #endif
+#endif
+
+/**
+ * Junction deviation is not compatible with kinematic systems.
+ */
+#if ENABLED(JUNCTION_DEVIATION) && IS_KINEMATIC
+  #error "Junction deviation is only compatible with Cartesians."
 #endif
 
 /**
@@ -1892,6 +1901,7 @@ static_assert(Y_MAX_LENGTH >= Y_BED_SIZE, "Movement bounds (Y_MIN_POS, Y_MAX_POS
   + ENABLED(OVERLORD_OLED) \
   + ENABLED(DGUS_LCD) \
   + ENABLED(MALYAN_LCD) \
+  + ENABLED(LULZBOT_TOUCH_UI) \
   + ENABLED(FSMC_GRAPHICAL_TFT)
   #error "Please select no more than one LCD controller option."
 #endif
