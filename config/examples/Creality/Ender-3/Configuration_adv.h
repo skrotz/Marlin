@@ -1287,7 +1287,7 @@
 //#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 1.2    // Unit: mm compression per 1mm/s extruder speed - SAK Change set default
+  #define LIN_ADVANCE_K 1.2    // Unit: mm compression per 1mm/s extruder speed - SAK Change set default for my ender-3
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
 
@@ -1861,7 +1861,7 @@
    */
   #define STEALTHCHOP_XY
   #define STEALTHCHOP_Z
-  #define STEALTHCHOP_E
+  // #define STEALTHCHOP_E - SAK Change - turn off stealth chop for extruder
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -1965,7 +1965,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  //#define SQUARE_WAVE_STEPPING
+  #define SQUARE_WAVE_STEPPING // SAK change - enabled
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.
