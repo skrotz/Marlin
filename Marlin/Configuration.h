@@ -759,7 +759,7 @@
  *   https://reprap.org/forum/read.php?1,739819
  *   http://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
-//#define JUNCTION_DEVIATION
+#define JUNCTION_DEVIATION // SAK Change - enable
 #if ENABLED(JUNCTION_DEVIATION)
   #define JUNCTION_DEVIATION_MM 0.08  // (mm) Distance from real junction edge - SAK change enable and set to 0.08 (tuned for ender-3)
 #endif
@@ -788,7 +788,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION // SAK change - enable
 
 //===========================================================================
 //============================= Z Probe Options =============================
