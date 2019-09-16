@@ -915,7 +915,7 @@
 #define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
 
 // Certain types of probes need to stay away from edges
-#define MIN_PROBE_EDGE 30
+#define MIN_PROBE_EDGE 15 // SAK Change was 30
 
 // X and Y axis travel speed (mm/m) between probes
 #define XY_PROBE_SPEED 8000
@@ -1047,11 +1047,11 @@
 #define Y_BED_SIZE 235
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -4
+#define Y_MIN_POS -12.6
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
-#define Y_MAX_POS Y_BED_SIZE
+#define X_MAX_POS (X_BED_SIZE + 18)
+#define Y_MAX_POS (Y_BED_SIZE + 3)
 #define Z_MAX_POS 250
 
 /**
@@ -1206,9 +1206,13 @@
 
   // Set the boundaries for probing (where the probe can reach).
   //#define LEFT_PROBE_BED_POSITION MIN_PROBE_EDGE
-  //#define RIGHT_PROBE_BED_POSITION (X_BED_SIZE - (MIN_PROBE_EDGE))
+  //#define RIGHT_PROBE_BED_POSITION (X_BED_SIZE - (MIN_PROBE_EDGE) - 1) // SAK Change subtract 1 for rounding error
   //#define FRONT_PROBE_BED_POSITION MIN_PROBE_EDGE
-  //#define BACK_PROBE_BED_POSITION (Y_BED_SIZE - (MIN_PROBE_EDGE))
+  //#define BACK_PROBE_BED_POSITION (Y_BED_SIZE - (MIN_PROBE_EDGE) - 1) // SAK Change subtract 1 for rounding error
+  #define LEFT_PROBE_BED_POSITION 22
+  #define RIGHT_PROBE_BED_POSITION 204
+  #define FRONT_PROBE_BED_POSITION 18
+  #define BACK_PROBE_BED_POSITION 209
 
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
