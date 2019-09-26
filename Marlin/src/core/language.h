@@ -46,6 +46,7 @@
 // bg         Bulgarian
 // ca         Catalan
 // cz         Czech
+// da         Danish
 // de         German
 // el         Greek
 // el-gr      Greek (Greece)
@@ -197,7 +198,7 @@
 #define MSG_Z3_MAX                          "z3_max"
 #define MSG_Z_PROBE                         "z_probe"
 #define MSG_FILAMENT_RUNOUT_SENSOR          "filament"
-#define MSG_PROBE_Z_OFFSET                  "Probe Z Offset"
+#define MSG_PROBE_OFFSET                    "Probe Offset"
 #define MSG_SKEW_MIN                        "min_skew_factor: "
 #define MSG_SKEW_MAX                        "max_skew_factor: "
 #define MSG_ERR_MATERIAL_INDEX              "M145 S<index> out of range (0-1)"
