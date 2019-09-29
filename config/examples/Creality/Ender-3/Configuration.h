@@ -716,12 +716,20 @@
  */
 //#define DISTINCT_E_FACTORS
 
+
+//#define BONDTECH
+#define ZESTY_NIMBLE
+
 /**
  * Default Axis Steps Per Unit (steps/mm)
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 } // SAK Changed extruder steps for Bondtech extruder (was 415 on first attempt)
+ #if ENABLED(ZESTY_NIMBLE)
+   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 2650 }  // SAK Change for Zesty Nimble
+ #else
+   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 } // SAK Changed extruder steps for Bondtech extruder (was 415 on first attempt)
+#endif
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -736,7 +744,13 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 5000 }
+ #if ENABLED(ZESTY_NIMBLE)
+   #define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 120 } // SAK Change for Zesty Nimble
+ #else
+   #define DEFAULT_MAX_ACCELERATION      { 500, 500, 100, 5000 }
+ #endif
+
+
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -746,8 +760,15 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
+
 #define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
+#if ENABLED(ZESTY_NIMBLE)
+#define DEFAULT_RETRACT_ACCELERATION  120    // E acceleration for retracts SAK Change for Zesty Nimble
+#else
 #define DEFAULT_RETRACT_ACCELERATION  500    // E acceleration for retracts
+#endif
+
+
 #define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
@@ -778,8 +799,11 @@
   #define DEFAULT_ZJERK  0.3
 #endif
 
+#if ENABLED(ZESTY_NIMBLE)
+#define DEFAULT_EJERK    3.0  // May be used by Linear Advance - SAK Change Zesty Nimble
+#else
 #define DEFAULT_EJERK    5.0  // May be used by Linear Advance
-
+#endif
 /**
  * S-Curve Acceleration
  *
@@ -1017,7 +1041,11 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
+#if ENABLED(BONDTECH)
 #define INVERT_E0_DIR false  // SAK Changed for bondtech extruder
+#else
+#define INVERT_E0_DIR true
+#endif
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
