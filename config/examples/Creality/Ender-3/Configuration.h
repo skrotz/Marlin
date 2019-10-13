@@ -800,7 +800,7 @@
 #endif
 
 #if ENABLED(ZESTY_NIMBLE)
-#define DEFAULT_EJERK    3.0  // May be used by Linear Advance - SAK Change Zesty Nimble
+#define DEFAULT_EJERK    0.6  // May be used by Linear Advance - SAK Change Zesty Nimble
 #else
 #define DEFAULT_EJERK    5.0  // May be used by Linear Advance
 #endif
